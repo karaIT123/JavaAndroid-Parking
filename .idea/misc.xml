@@ -7,6 +7,10 @@
         <entry key="..\:/Parking/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Parking/app/src/main/res/layout/activity_main.xml" value="0.1661600810536981" />
         <entry key="..\:/Parking/app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_add_zone.xml" value="0.20572916666666666" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.21979166666666666" />
+        <entry key="app/src/main/res/layout/activity_parking_list.xml" value="0.20572916666666666" />
+        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.22327898550724637" />
       </map>
     </option>
   </component>

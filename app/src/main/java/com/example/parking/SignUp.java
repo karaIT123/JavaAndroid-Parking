@@ -71,7 +71,7 @@ public class SignUp extends AppCompatActivity {
         }
         else {
             progressDialog.show();
-            StringRequest request = new StringRequest(Request.Method.POST, "http://localhost/android/signup.php",
+            StringRequest request = new StringRequest(Request.Method.POST, "http://localhost:8000/signup",
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -88,7 +88,7 @@ public class SignUp extends AppCompatActivity {
                     }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(SignUp.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUp.this,error.getMessage() + " Bla bla bla bla",Toast.LENGTH_SHORT).show();
                     progressDialog.dismiss();
                 }
             }
