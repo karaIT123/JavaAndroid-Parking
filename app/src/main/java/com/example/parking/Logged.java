@@ -6,16 +6,25 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class Logged extends AppCompatActivity {
+import java.io.Serializable;
 
+public class Logged extends AppCompatActivity implements Serializable {
+
+    String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logged);
+
+        Intent i = getIntent();
+        id = i.getSerializableExtra("user_id").toString();
+
     }
 
     public void myAccount(View view) {
-
+        Intent i = new Intent(getApplicationContext(),MyAccount.class);
+        i.putExtra("users_id",this.id);
+        startActivity(i);
     }
 
     public void addParking(View view) {
