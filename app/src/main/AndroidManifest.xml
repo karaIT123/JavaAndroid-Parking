@@ -15,6 +15,12 @@
         android:theme="@style/Theme.Parking"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".UserList"
+            android:exported="false" />
+        <activity
+            android:name=".Logged"
+            android:exported="false" />
+        <activity
             android:name=".ParkingList"
             android:exported="false" />
         <activity

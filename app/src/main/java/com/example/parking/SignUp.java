@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DownloadManager;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.textclassifier.TextLinks;
@@ -26,6 +27,7 @@ import java.util.Map;
 public class SignUp extends AppCompatActivity {
 
     EditText fullname,username,email,password;
+    DatabaseManager databaseManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +37,15 @@ public class SignUp extends AppCompatActivity {
         username = findViewById(R.id.sign_username);
         email = findViewById(R.id.sign_email);
         password = findViewById(R.id.sign_password);
+
+        databaseManager = new DatabaseManager(this);
+
+        try {
+            databaseManager.open();
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -70,7 +81,7 @@ public class SignUp extends AppCompatActivity {
             return;
         }
         else {
-            progressDialog.show();
+            /*progressDialog.show();
             StringRequest request = new StringRequest(Request.Method.POST, "http://localhost:8000/signup",
                     new Response.Listener<String>() {
                         @Override
@@ -112,8 +123,23 @@ public class SignUp extends AppCompatActivity {
 
 
             RequestQueue requestQueue = Volley.newRequestQueue(SignUp.this);
-            requestQueue.add(request);
+            requestQueue.add(request);*/
+
+            boolean checkSign = databaseManager.insertUser(sfullname,susername,semail,spassord);
+            if(checkSign){
+                Toast.makeText(getApplicationContext(),"SignUp success", Toast.LENGTH_SHORT).show();
+                Intent  i = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(i);
+            }
+            else
+                Toast.makeText(getApplicationContext(),"SignUp failed", Toast.LENGTH_SHORT).show();
+
         }
 
+    }
+
+    public void goToLogin(View view) {
+        Intent i = new Intent(getApplicationContext(),Login.class);
+        startActivity(i);
     }
 }

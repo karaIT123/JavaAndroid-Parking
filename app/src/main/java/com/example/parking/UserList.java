@@ -9,19 +9,17 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class ParkingList extends AppCompatActivity {
+public class UserList extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_parking_list);
+        setContentView(R.layout.activity_user_list);
 
-        ListView listView = findViewById(R.id.list);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(ParkingList.this,R.layout.support_simple_spinner_dropdown_item, getList());
+        ListView listView = findViewById(R.id.userListView);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(UserList.this,R.layout.support_simple_spinner_dropdown_item, getList());
         listView.setAdapter(adapter);
-
-
     }
-
 
     private ArrayList<String> getList()
     {
@@ -33,11 +31,11 @@ public class ParkingList extends AppCompatActivity {
         {
             e.printStackTrace();
         }
-        Cursor cursor = databaseManager.getAllParking();
+        Cursor cursor = databaseManager.getALLUser();
         if (cursor.moveToFirst()) {
             do {
 
-                arr.add(cursor.getString((int) cursor.getColumnIndex(DatabaseHelper.PARKING_NAME)) + " " + cursor.getString((int) cursor.getColumnIndex(DatabaseHelper.PARKING_ZONE)));
+                arr.add(cursor.getString((int) cursor.getColumnIndex(DatabaseHelper.USER_FULLNAME)));
             }
             while (cursor.moveToNext());
         }
