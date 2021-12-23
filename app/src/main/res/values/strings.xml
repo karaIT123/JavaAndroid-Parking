@@ -6,4 +6,6 @@
     <string name="fullname">Fullname</string>
     <string name="email">Email</string>
     <string name="signup">SignUp</string>
+    <string name="_1">1</string>
+    <string name="parking_name">Parking name</string>
 </resources>
